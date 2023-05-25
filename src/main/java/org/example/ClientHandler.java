@@ -9,38 +9,39 @@ import java.net.SocketException;
 class ClientHandler implements Runnable {
     private final Socket clientSocket;
     private final ObjectOutputStream out;
-    private final BufferedReader in;
+    private final ObjectInputStream in;
+    private String clientName;
 
     public ClientHandler(Socket socket) throws IOException {
         this.clientSocket = socket;
         out = new ObjectOutputStream(clientSocket.getOutputStream());
-        in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+        in = new ObjectInputStream(clientSocket.getInputStream());
     }
 
     @Override
     public void run() {
         try {
-            String line;
-            while ((line = in.readLine()) != null) {
-                System.out.printf("Message received from client: %s\n", line);
+            Message firstMessage = (Message) in.readObject();
+            System.out.printf("First message received from client: %s\n", firstMessage.getText());
+            clientName = firstMessage.getSender();
+            System.out.printf("Client connected: %s\n", clientName);
+            Server.broadcastMessage(firstMessage);
 
-                // Create a Message object
-                Message message = new Message("Server", MessageType.POST_USER_STRING, line);
-
-                // Send the Message object to all connected clients
+            while (true) {
+                Message message = (Message) in.readObject();
+                System.out.printf("Message received from client: %s %s\n", clientName, message.getText());
                 Server.broadcastMessage(message);
             }
         } catch (SocketException e) {
-            // Log the specific "Connection reset" error
             System.err.println("Client disconnected: " + e.getMessage());
-            Message message = new Message("Server", MessageType.POST_LOGOUT, "user logout");
+            Message message = new Message("Server", MessageType.POST_LOGOUT, "User logout: " + clientName);
             Server.broadcastMessage(message);
             try {
                 closeResources();
             } catch (IOException ex) {
                 System.out.println();
             }
-        } catch (IOException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
             try {

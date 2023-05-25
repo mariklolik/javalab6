@@ -32,11 +32,6 @@ public class Main {
     }
 
 }
-//        Socket socket = new Socket("localhost", 1234);
-//        BlockingQueue<String> inputQueue = new LinkedBlockingQueue<>();
-//        BlockingQueue<String> outputQueue = new LinkedBlockingQueue<>();
-//        Client client = null;
-//        ClientView view = new ClientView(client);
-//        client = new Client(socket, inputQueue, outputQueue);
+
 
 

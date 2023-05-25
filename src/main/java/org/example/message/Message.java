@@ -14,13 +14,27 @@ public class Message implements Serializable {
         return text;
     }
 
-    private final String text;
-    private final String from;
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    private String text;
+
+    public String getSender() {
+        return sender;
+    }
+
+    private final String sender;
+
+    public MessageType getMessageType() {
+        return messageType;
+    }
+
     private final MessageType messageType;
 
-    public Message(String from, MessageType messageType, String text) {
+    public Message(String sender, MessageType messageType, String text) {
         this.id = UUID.randomUUID();
-        this.from = from;
+        this.sender = sender;
         this.messageType = messageType;
         this.text = text;
     }

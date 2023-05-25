@@ -1,6 +1,7 @@
 package org.example.client;
 
 import org.example.message.Message;
+import org.example.message.MessageType;
 
 import java.io.*;
 import java.net.Socket;
@@ -8,18 +9,18 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class Client {
-    private final PrintWriter out;
+    private final ObjectOutputStream out;
     private final ObjectInputStream in;
     private final BlockingQueue<String> messageQueue;
 
-    private final String clientId;
+    public final String clientId;
 
     public Client(Socket socket, String clientId) throws IOException {
         this.clientId = clientId;
-        out = new PrintWriter(socket.getOutputStream(), true);
+        out = new ObjectOutputStream(socket.getOutputStream());
         in = new ObjectInputStream(socket.getInputStream());
         messageQueue = new LinkedBlockingQueue<>();
-
+        sendMessage(new Message(this.clientId, MessageType.POST_LOGIN, "NEW USER JOINED - %s".formatted(this.clientId)));
         // Start a separate thread to continuously receive messages from the server
         Thread receiveThread = new Thread(() -> {
             try {
@@ -27,7 +28,7 @@ public class Client {
                     Object obj = in.readObject();
                     if (obj instanceof Message) {
                         Message message = (Message) obj;
-                        messageQueue.put("Received from server: " + message.getText());
+                        messageQueue.put( message.getText());
                     }
                 }
             } catch (IOException | ClassNotFoundException | InterruptedException e) {
@@ -41,8 +42,12 @@ public class Client {
         return messageQueue;
     }
 
-    public void sendMessage(String message) {
-        out.println(message);
-        out.flush();
+    public void sendMessage(Message message) {
+        try {
+            out.writeObject(message);
+            out.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

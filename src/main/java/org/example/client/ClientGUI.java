@@ -1,5 +1,8 @@
 package org.example.client;
 
+import org.example.message.Message;
+import org.example.message.MessageType;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -16,7 +19,7 @@ public class ClientGUI extends JFrame {
         this.client = client;
         setTitle("Chat Client");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 300);
+        setSize(500, 500);
         setLocationRelativeTo(null);
 
         // Create components
@@ -31,9 +34,10 @@ public class ClientGUI extends JFrame {
         panel.add(inputTextField, BorderLayout.NORTH);
         panel.add(sendButton, BorderLayout.SOUTH);
 
+
         // Set panel to content pane
         setContentPane(panel);
-
+        sendMessage();
         // Set action listener for the send button
         sendButton.addActionListener(new ActionListener() {
             @Override
@@ -41,6 +45,7 @@ public class ClientGUI extends JFrame {
                 sendMessage();
             }
         });
+
 
 
         // Start a thread to continuously update the chat text area
@@ -60,12 +65,14 @@ public class ClientGUI extends JFrame {
     }
 
     private void sendMessage() {
-        String message = inputTextField.getText().trim();
-        if (!message.isEmpty()) {
+        String text = inputTextField.getText().trim();
+        if (!text.isEmpty()) {
+            Message message = new Message(client.clientId, MessageType.POST_USER_STRING, text);
             client.sendMessage(message);
             inputTextField.setText("");
         }
     }
+
 
     private void appendMessage(String message) {
         chatTextArea.append(message + "\n");
