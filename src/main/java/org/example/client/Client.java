@@ -4,50 +4,45 @@ import org.example.message.Message;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.Scanner;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class Client {
     private final PrintWriter out;
     private final ObjectInputStream in;
+    private final BlockingQueue<String> messageQueue;
 
     private final String clientId;
-    public Client(Socket socket, String clientId) throws InterruptedException, IOException {
+
+    public Client(Socket socket, String clientId) throws IOException {
         this.clientId = clientId;
         out = new PrintWriter(socket.getOutputStream(), true);
         in = new ObjectInputStream(socket.getInputStream());
+        messageQueue = new LinkedBlockingQueue<>();
 
-        // Broadcast listener thread
+        // Start a separate thread to continuously receive messages from the server
         Thread receiveThread = new Thread(() -> {
             try {
                 while (true) {
                     Object obj = in.readObject();
                     if (obj instanceof Message) {
                         Message message = (Message) obj;
-                        System.out.println("Received from server: " + message.getText());
+                        messageQueue.put("Received from server: " + message.getText());
                     }
                 }
-            } catch (IOException | ClassNotFoundException e) {
+            } catch (IOException | ClassNotFoundException | InterruptedException e) {
                 e.printStackTrace();
             }
         });
         receiveThread.start();
+    }
 
-        Scanner sc = new Scanner(System.in);
-        String line;
+    public BlockingQueue<String> getMessageQueue() {
+        return messageQueue;
+    }
 
-        while (true) {
-            line = sc.nextLine();
-
-            out.println(line);
-            out.flush();
-
-            if ("exit".equalsIgnoreCase(line)) {
-                break;
-            }
-        }
-
-        // Wait for the receiveThread to finish before closing the socket and streams
-        receiveThread.join();
-
+    public void sendMessage(String message) {
+        out.println(message);
+        out.flush();
     }
 }

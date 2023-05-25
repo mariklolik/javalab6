@@ -6,7 +6,7 @@ import java.net.Socket;
 
 
 public class Main {
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws IOException {
 
         InputFrame inputFrame = new InputFrame();
 
@@ -28,7 +28,7 @@ public class Main {
         }
 
         Client client = new Client(socket, name);
-
+        new ClientGUI(client);
     }
 
 }
