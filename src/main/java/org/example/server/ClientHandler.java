@@ -1,4 +1,4 @@
-package org.example;
+package org.example.server;
 
 import org.example.message.Message;
 import org.example.message.MessageType;
