@@ -7,16 +7,22 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class ClientGUI extends JFrame {
-    private JTextArea chatTextArea;
-    private JTextField inputTextField;
-    private Client client;
+    private final JTextArea chatTextArea;
+    private final JTextField inputTextField;
+    private final Client client;
+
+    private final DefaultListModel<String> userListModel;
 
     public ClientGUI(Client client) {
         this.client = client;
+
+        client.gui = this;
+
         setTitle("Chat Client");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500, 500);
@@ -46,20 +52,38 @@ public class ClientGUI extends JFrame {
             }
         });
 
+        userListModel = new DefaultListModel<>();
+        JList<String> userList = new JList<>(userListModel);
 
+        JScrollPane userListScrollPane = new JScrollPane(userList);
+        userListScrollPane.setPreferredSize(new Dimension(150, getHeight()));
+        panel.add(userListScrollPane, BorderLayout.WEST);
 
         // Start a thread to continuously update the chat text area
-        Thread updateThread = new Thread(() -> {
+        Thread updateMessageThread = new Thread(() -> {
             try {
                 while (true) {
                     String message = client.getMessageQueue().take();
+
                     appendMessage(message);
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         });
-        updateThread.start();
+        updateMessageThread.start();
+
+        Thread updateClientsThread = new Thread(() -> {
+            try {
+                while (true) {
+                    String message = client.getClientsQueue().take();
+                    updateUsers(message);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        updateClientsThread.start();
 
         setVisible(true);
     }
@@ -78,6 +102,26 @@ public class ClientGUI extends JFrame {
         chatTextArea.append(message + "\n");
     }
 
+    private List<String> stringToArray(String string) {
+        string = string.substring(1, string.length() - 1);
+        String[] listElements = string.split(",");
+        List<String> stringList = new ArrayList<>();
+        for (String element : listElements) {
+            String trimmedElement = element.trim();
+            stringList.add(trimmedElement);
+        }
+        return stringList;
+    }
+
+    private void updateUsers(String message) {
+        List<String> users = stringToArray(message);
+        userListModel.clear();
+        for (String username : users) {
+            userListModel.addElement(username + "\n");
+        }
+
+
+    }
 
 
 }

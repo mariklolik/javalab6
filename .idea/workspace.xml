@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1053e25b-4db5-4596-b9b4-7f095088de58" name="Changes" comment="Everything is done!!">
+    <list default="true" id="1053e25b-4db5-4596-b9b4-7f095088de58" name="Changes" comment="Minor changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/client/ClientGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/client/ClientGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/client/InputFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/client/InputFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/client/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/client/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/message/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/message/MessageType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,10 +121,10 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.org.example.client.Main" />
       <item itemvalue="Application.Client" />
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.Server" />
+      <item itemvalue="Application.org.example.client.Main" />
     </list>
     <recent_temporary>
       <list>
@@ -140,6 +145,15 @@
       <updated>1685034124173</updated>
       <workItem from="1685034125350" duration="15432000" />
       <workItem from="1685057542174" duration="1342000" />
+      <workItem from="1685079099094" duration="2007000" />
+      <workItem from="1685085605278" duration="10000" />
+      <workItem from="1685085718965" duration="2040000" />
+      <workItem from="1685101005822" duration="145000" />
+      <workItem from="1685101524042" duration="914000" />
+      <workItem from="1685266346514" duration="59000" />
+      <workItem from="1685272265345" duration="3000" />
+      <workItem from="1685544524831" duration="3000" />
+      <workItem from="1685844733194" duration="17558000" />
     </task>
     <task id="LOCAL-00001" summary="Everything works no gui">
       <created>1685052733828</created>
@@ -162,7 +176,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685055460511</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Minor changes">
+      <created>1685079342957</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1685079342957</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,17 +193,22 @@
     <MESSAGE value="Everything works no gui" />
     <MESSAGE value="User GUI" />
     <MESSAGE value="Everything is done!!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Everything is done!!" />
+    <MESSAGE value="Minor changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/server/Server.java</url>
-          <line>16</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.io.EOFException" package="java.io" />
+          <option name="timeStamp" value="6" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="names" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

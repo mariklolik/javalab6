@@ -6,10 +6,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class InputFrame extends JFrame {
-    private JTextField hostTextField;
-    private JTextField portTextField;
-    private JTextField nameTextField;
-    private JButton okButton;
+    private final JTextField hostTextField;
+    private final JTextField portTextField;
+    private final JTextField nameTextField;
     private String host;
     private String port;
     private String name;
@@ -24,12 +23,12 @@ public class InputFrame extends JFrame {
         JPanel inputPanel = new JPanel(new GridLayout(3, 2));
 
         JLabel hostLabel = new JLabel("Host Address:");
-        hostTextField = new JTextField();
+        hostTextField = new JTextField("localhost");
         inputPanel.add(hostLabel);
         inputPanel.add(hostTextField);
 
         JLabel portLabel = new JLabel("Port Address:");
-        portTextField = new JTextField();
+        portTextField = new JTextField("1234");
         inputPanel.add(portLabel);
         inputPanel.add(portTextField);
 
@@ -40,7 +39,7 @@ public class InputFrame extends JFrame {
 
         add(inputPanel, BorderLayout.CENTER);
 
-        okButton = new JButton("OK");
+        JButton okButton = new JButton("OK");
         okButton.addActionListener(e -> {
             host = hostTextField.getText();
             port = portTextField.getText();
