@@ -23,12 +23,12 @@ public class InputFrame extends JFrame {
         JPanel inputPanel = new JPanel(new GridLayout(3, 2));
 
         JLabel hostLabel = new JLabel("Host Address:");
-        hostTextField = new JTextField();
+        hostTextField = new JTextField("localhost");
         inputPanel.add(hostLabel);
         inputPanel.add(hostTextField);
 
         JLabel portLabel = new JLabel("Port Address:");
-        portTextField = new JTextField();
+        portTextField = new JTextField("1234");
         inputPanel.add(portLabel);
         inputPanel.add(portTextField);
 

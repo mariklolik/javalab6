@@ -84,6 +84,7 @@ public class XMLMessage {
 
             // Retrieve values from XML elements
             String idString = getElementTextContent(messageElement, "Id");
+            assert idString != null;
             UUID id = UUID.fromString(idString);
 
             String sender = getElementTextContent(messageElement, "Sender");
@@ -110,5 +111,9 @@ public class XMLMessage {
             return tagElement.getTextContent();
         }
         return null;
+    }
+
+    public MessageType getMessageType() {
+        return this.messageType;
     }
 }
