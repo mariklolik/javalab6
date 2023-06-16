@@ -8,9 +8,6 @@ import java.net.Socket;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-
-        // CR
-        // если сервер отключается во время работы - обработать
         InputFrame inputFrame = new InputFrame();
 
         String host = inputFrame.getHost();

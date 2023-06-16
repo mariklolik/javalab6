@@ -7,6 +7,5 @@ public enum MessageType {
     USER_KILL,
 
     USER_LIST,
-    GET_USER_ADDED
 
 }

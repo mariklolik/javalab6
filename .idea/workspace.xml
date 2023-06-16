@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1053e25b-4db5-4596-b9b4-7f095088de58" name="Changes" comment="Minor changes">
+    <list default="true" id="1053e25b-4db5-4596-b9b4-7f095088de58" name="Changes" comment="Code review 1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/client/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/client/ClientGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/client/ClientGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/client/InputFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/client/InputFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/client/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/client/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/message/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/message/MessageType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +56,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.example.client" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\NSU\oopjava\lab6\Client\Client\src\main\java\org\example" />
     </key>
@@ -67,7 +66,7 @@
       <recent name="org.example" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.org.example.client.Main">
+  <component name="RunManager" selected="Application.Server">
     <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.client.Client" />
       <module name="Client" />
@@ -128,8 +127,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.org.example.client.Main" />
         <item itemvalue="Application.Server" />
+        <item itemvalue="Application.org.example.client.Main" />
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.Main" />
       </list>
@@ -153,7 +152,9 @@
       <workItem from="1685266346514" duration="59000" />
       <workItem from="1685272265345" duration="3000" />
       <workItem from="1685544524831" duration="3000" />
-      <workItem from="1685844733194" duration="17558000" />
+      <workItem from="1685844733194" duration="18370000" />
+      <workItem from="1685892641758" duration="1733000" />
+      <workItem from="1686875463197" duration="2224000" />
     </task>
     <task id="LOCAL-00001" summary="Everything works no gui">
       <created>1685052733828</created>
@@ -183,7 +184,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685079342957</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Code review 1">
+      <created>1685869078899</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1685869078899</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,7 +202,8 @@
     <MESSAGE value="User GUI" />
     <MESSAGE value="Everything is done!!" />
     <MESSAGE value="Minor changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor changes" />
+    <MESSAGE value="Code review 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code review 1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

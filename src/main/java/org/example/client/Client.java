@@ -48,8 +48,6 @@ public class Client {
                         }
                     }
                 }
-            }catch (EOFException e){
-                System.out.println("daw");
             }
             catch (IOException | ClassNotFoundException | InterruptedException e) {
                 System.err.println("Unable to establish connection with server");
